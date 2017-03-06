@@ -1,7 +1,7 @@
 var database = firebase.database();
 var placesDatabase = database.ref('places');
 var placesList = [];
-
+on('child_added', doSomething);
 placesDatabase.on('child_added', function( firebaseObject ) 
 {
     var place = firebaseObject.val(); 
