@@ -1,59 +1,95 @@
+<!DOCTYPE html>
 <html>
-<head>
-  
-  <title>AnyWeather</title>
-      <script
-    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCt33BUjbesb9n0mzaU_o5HcFmk_tVg7nI">
-    </script>
-</head>
-<body bgcolor="ffe401">
-    <img src="media/Logo.png" width="100%">
-    <br>
-    <a href="https://www.accuweather.com/en/gb/north-greenwich/se10-0/weather-forecast/323472" class="aw-widget-legal">
-<!--
-By accessing and/or using this code snippet, you agree to AccuWeather’s terms and conditions (in English) which can be found at http://www.accuweather.com/en/free-weather-widgets/terms and AccuWeather’s Privacy Statement (in English) which can be found at http://www.accuweather.com/en/privacy.
--->
-</a><div id="awcc1488368019141" class="aw-widget-current"  data-locationkey="323472" data-unit="c" data-language="en-us" data-useip="true" data-uid="awcc1488368019141"></div>
-    <script type="text/javascript" src="https://oap.accuweather.com/launch.js"></script>
-<br>
-<center><div id="map" style="height: 300px; width: 80%;"></center>
-</div>
-<script type="text/javascript">
-    var locations = [
-      ['Costa', 51.501333, 0.005359, 4],
-      ['All Bar One', 51.501720, 0.003825, 5],
-      ['Nandos', 51.503510, 0.005112, 3],
-      ['Cineworld Cinema', 51.503176, 0.004179, 2],
-      ['North Greenwich Pier', 51.502141, 0.008267, 1]
-    ];
+  <head>
+    <title>Geolocation</title>
+    <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
+    <meta charset="utf-8">
+    <style>
+      /* Always set the map height explicitly to define the size of the div
+       * element that contains the map. */
+      #map {
+        height: 100%;
+      }
+      /* Optional: Makes the sample page fill the window. */
+      html, body {
+        height: 100%;
+        margin: 0;
+        padding: 0;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="map"></div>
+    <script>
+      // Note: This example requires that you consent to location sharing when
+      // prompted by your browser. If you see the error "The Geolocation service
+      // failed.", it means you probably did not give permission for the browser to
+      // locate you.
+      window.addEventListener('locationsLoaded', function(e)
+    {
+      console.log('locations loaded oh yeah');
+      for (var i=0; i<locations.length; i++)
+        {
+      var location = locations[i];
+      var map, infoWindow;
+        
+      function initMap() {
+        map = new google.maps.Map(document.getElementById('map'), {
+          center: {lat: -34.397, lng: 150.644},
+          zoom: 6
+        });
+        infoWindow = new google.maps.InfoWindow;
 
-    var map = new google.maps.Map(document.getElementById('map'), {
-      zoom: 15,
-      center: new google.maps.LatLng(51.501740, 0.005766),
-      mapTypeId: google.maps.MapTypeId.ROADMAP
-    });
-
-    var infowindow = new google.maps.InfoWindow();
-
-    var marker, i;
-
-    for (i = 0; i < locations.length; i++) { 
-      marker = new google.maps.Marker({
-        position: new google.maps.LatLng(locations[i][1], locations[i][2]),
-        map: map
-      });
-
-      google.maps.event.addListener(marker, 'click', (function(marker, i) {
-        return function() {
-          infowindow.setContent(locations[i][0]);
-          infowindow.open(map, marker);
+        // Try HTML5 geolocation.
+        if (navigator.geolocation) {
+          navigator.geolocation.getCurrentPosition(function(position) {
+            var pos = {
+              lat: position.coords.latitude,
+              lng: position.coords.longitude
+            };
+              
+            var marker = new google.maps.Marker({
+            position: pos,
+            map: map,
+            title: 'You are here!'
+            });
+            map.setCenter(pos);
+          }, function() {
+            handleLocationError(true, infoWindow, map.getCenter());
+          });
+        } else {
+          // Browser doesn't support Geolocation
+          handleLocationError(false, infoWindow, map.getCenter());
         }
-      })(marker, i));
-    }
-  </script>
-
-<br>
-<center><a href="index.html"><button>Home</button></a></center>
     
-</body>
+        
+    function addInfoWindow(location)
+    {
+        
+        var infoWindow = new google.maps.InfoWindow; 
+        var pos = 
+        {
+            lat: location.latitude,
+            lng: location.longitude
+        };
+        infoWindow.setPosition(pos);
+        infoWindow.setContent(location.places);
+        infoWindow.open(map);  
+        
+          
+          
+      }}
+
+      function handleLocationError(browserHasGeolocation, infoWindow, pos) {
+        infoWindow.setPosition(pos);
+        infoWindow.setContent(browserHasGeolocation ?
+                              'Error: The Geolocation service failed.' :
+                              'Error: Your browser doesn\'t support geolocation.');
+        infoWindow.open(map);
+      }}}
+    </script>
+    <script async defer
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB0IgedE0gQrk_Jb2oUT0dJI9bvt0a9lKQ &callback=initMap">
+    </script>
+  </body>
 </html>
