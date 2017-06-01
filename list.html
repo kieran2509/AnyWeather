@@ -146,11 +146,11 @@
             var end = p2
             var DirectionsURL = 'https://www.google.com/maps/dir/?api=1&origin=' + start + '&destination=' + end 
         console.log(DirectionsURL)
-            document.getElementById ("change").innerHTML = location.places +" - "+ location.about +'<br>'+ "Positioned only " + calcDistance(p1,p2)+ " km away "+ '<img src="' + location.image +'"width=50%>' + '<br>' +'<a href="' + DirectionsURL +'"role=button>'+'<button>'+ "Get Directions" +'</button>'+'</a>'                
+            document.getElementById ("change").innerHTML = "Positioned only " + calcDistance(p1,p2)+ " km away "+ '<br>' +location.places +" - "+ location.about +'<br>'+  '<img src="' + location.image +'"width=50%>' +'<br>' +'<a href="' + DirectionsURL +'"role=button>'+'<button>'+ "Get Directions" +'</button>'+'</a>'                
             }
               //calculates distance between two points in km's
             function calcDistance(p1, p2) {
-              return (google.maps.geometry.spherical.computeDistanceBetween(p1, p2) / 1000).toFixed(2);
+              return (google.maps.geometry.spherical.computeDistanceBetween(p1, p2) / 1000).toFixed(1);
             }})
         var marker = new google.maps.Marker({
             position: pos,
