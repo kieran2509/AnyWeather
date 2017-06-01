@@ -64,7 +64,7 @@
      ];
     
      var image = 'media/person.png';
-     
+     function initMap() {
      var map = new google.maps.Map(document.getElementById('map'), {
        mapTypeControlOptions: {
          mapTypeIds: ['mystyle', google.maps.MapTypeId.ROADMAP, google.maps.MapTypeId.TERRAIN]
@@ -163,9 +163,11 @@
         });
     }}
         console.log(currentWeather)
+     }
     </script>
-    <script async defer
-    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB0IgedE0gQrk_Jb2oUT0dJI9bvt0a9lKQ &callback=initMap">
+    
+      <script async defer
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB0IgedE0gQrk_Jb2oUT0dJI9bvt0a9lKQ&callback=initMap">
     </script>
 </body> 
 </html>
