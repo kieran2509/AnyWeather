@@ -109,12 +109,7 @@
         infoWindow.open(map);
       }
       
-     window.addEventListener('weatherLoaded', function(e)
-    {
-        console.log('weathers loaded oh yeah');
-      
-        
-    }, false);     
+         
          
         // adding places with pegs here
     window.addEventListener('locationsLoaded', function(e)
@@ -130,11 +125,23 @@
   
     function addInfoWindow(location)
     {
+        window.addEventListener('weatherLoaded', function(e)
+    {
+        console.log('weathers loaded oh yeah');
+        //var weather = currentWeather
+        console.log(currentWeather)
+        //need work HERE
+        var weather = location[currentWeather]
+        console.log(weather)
+        if (weather == true){
+            console.log(location.places)
+            
         
-        var contentString = '<h1>'+location.places+'</h1>' + '<br>' +
-            location.about + '<br>' +
-            '<img src="' + location.image +'"width=100%>'
         
+        
+    
+        var contentString = '<h1>'+location.places+'</h1>' + '<br>' + location.about + '<br>' + '<img src="' + location.image +'"width=100%>'
+        console.log(location.places)
 
         var infowindow = new google.maps.InfoWindow({
           content: contentString
@@ -154,7 +161,7 @@
             var end = p2
             var DirectionsURL = 'https://www.google.com/maps/dir/?api=1&origin=' + start + '&destination=' + end 
         console.log(DirectionsURL)
-            document.getElementById ("change").innerHTML = "Positioned only " + calcDistance(p1,p2)+ " km away "+ '<br>' +location.places +" - "+ location.about +'<br>'+  '<img src="' + location.image +'"width=50%>' +'<br>' +'<a href="' + DirectionsURL +'"role=button>'+'<button>'+ "Get Directions" +'</button>'+'</a>'                
+            document.getElementById ("change").innerHTML = "Positioned only " + calcDistance(p1,p2)+ " km away "+ '<br>' +location.places +" - "+ location.about +'<br>'+  '<img src="' + location.image +'"width=50%>' +'<br>' +'<a href="' + DirectionsURL +'"role=button>'+'<button>'+ "Get Directions" +'</button>'+'</a>'        
             }
               //calculates distance between two points in km's
             function calcDistance(p1, p2) {
@@ -168,7 +175,9 @@
         
         marker.addListener('click', function() {
           infowindow.open(map, marker);
-        })}}}
+
+        })}}}, false); }}
+
     </script>
     
       <script async defer

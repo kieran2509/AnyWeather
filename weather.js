@@ -131,12 +131,8 @@ switch(weatherid) {
         case 905:
             console.log ("Cold day");
             currentWeather = 'cold_day'
-            
-}}
-//says . is undefined
-.then(handleData()       
-{
-    console.log('weathers loaded on weather.js!')
-    var event = new Event('weatherLoaded');
+}
+var event = new Event('weatherLoaded');
     window.dispatchEvent(event);
-});
+}
+
