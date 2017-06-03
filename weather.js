@@ -1,12 +1,11 @@
 navigator.geolocation.watchPosition(gotPosition)
-var currentWeather;
+
+var APIKey = 'a120aa36dac8f8043805f63a51019310'
 
 function gotPosition(position) 
 {   
     getTheWeather(position)
 }
-
-var APIKey = 'a120aa36dac8f8043805f63a51019310'
 
 function getTheWeather(position)
 {
@@ -21,17 +20,21 @@ function getTheWeather(position)
     })
 }
 
+var currentWeather = 'rain';
+var weather;
+var weatherid;
 function handleData(json)
 {
     console.log(json)
 
-    var weather = json.weather[0]
+    weather = json.weather[0]
         
-    var weatherid = weather.id
+    window.weatherid = weather.id
     //    new Number(weatherid)  
     console.log(weatherid)
 
-    console.log(currentWeather)
+console.log(weatherid)
+
 switch(weatherid) {
         case 200:
         case 201:
@@ -108,7 +111,8 @@ switch(weatherid) {
         case 956:
         case 721:
             console.log ("Sunny");
-            currentWeather = 'sun' 
+            currentWeather = 'sun';
+            console.log(currentWeather)
             break;
         case 300:
         case 741:
@@ -129,3 +133,10 @@ switch(weatherid) {
             currentWeather = 'cold_day'
             
 }}
+//says . is undefined
+.then(handleData()       
+{
+    console.log('weathers loaded on weather.js!')
+    var event = new Event('weatherLoaded');
+    window.dispatchEvent(event);
+});
