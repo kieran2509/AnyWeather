@@ -127,19 +127,13 @@
     {
         window.addEventListener('weatherLoaded', function(e)
     {
-        console.log('weathers loaded oh yeah');
+//        console.log('weathers loaded oh yeah');
         //var weather = currentWeather
         console.log(currentWeather)
         //need work HERE
         var weather = location[currentWeather]
         console.log(weather)
-        if (weather == true){
-            console.log(location.places)
-            
-        
-        
-        
-    
+        if (weather == true){    
         var contentString = '<h1>'+location.places+'</h1>' + '<br>' + location.about + '<br>' + '<img src="' + location.image +'"width=100%>'
         console.log(location.places)
 
