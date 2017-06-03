@@ -9,7 +9,7 @@ function gotPosition(position)
 
 function getTheWeather(position)
 {
-    var URL = 'http://api.openweathermap.org/data/2.5/weather?lat=' + position.coords.latitude + '&lon=' + position.coords.longitude + '&APPID=' + APIKey
+    var URL = 'https://api.openweathermap.org/data/2.5/weather?lat=' + position.coords.latitude + '&lon=' + position.coords.longitude + '&APPID=' + APIKey
     console.log(URL)
 
     $.ajax(
