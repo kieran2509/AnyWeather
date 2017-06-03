@@ -149,7 +149,7 @@
           navigator.geolocation.getCurrentPosition(function(position) {
             var p1 = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
             var p2 = new google.maps.LatLng(location.latitude, location.longitude);
-            if (calcDistance(p1,p2)>10){
+            if (calcDistance(p1,p2)<10){
             console.log(location.places)
             var start = p1
             var end = p2
