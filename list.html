@@ -31,7 +31,6 @@
     <script src="js/jquery-3.2.1.min.js"></script>  
     <script type="text/javascript" src="https://maps.google.com/maps/api/js?sensor=false&libraries=geometry"></script>
 
-     
     <script src="firebase.js"></script> 
     <script src="weather.js"></script> 
     <script type="text/javascript"> 
@@ -133,6 +132,7 @@
         //need work HERE
         var weather = location[currentWeather]
         console.log(weather)
+        
         if (weather == true){    
         var contentString = '<h1>'+location.places+'</h1>' + '<br>' + location.about + '<br>' + '<img src="' + location.image +'"width=100%>'
         console.log(location.places)

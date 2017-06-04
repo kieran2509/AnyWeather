@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    
+    <title>Firebase Pusher</title>
+    <link rel="stylesheet" href="style.css">
+
+  </head>
+  
+  
+    <body bgcolor="ffe401">
+    <img src="media/Logo.png" width="100%">  
+
+<h2>
+  Upload form
+    </h2> 
+  
+
+    
+    <form action="" method="post">
+      <p>
+        Place name <input name="places" placeholder="Place name" type="text">  
+      </p>
+        <p>
+        Place website URL 
+        <input name="Url" placeholder="URL" type="url">  
+      </p>
+        <div>
+        <p>Put the PostCode in here to autofill Latitude and longitude</p>
+        <form class="pure-form">
+  <input id="name" type="text" placeholder="PostCode" onChange="inputChange(event)" onKeyUp="inputChange(event)" />
+</form>
+    </div>
+      <p>
+        Latitude? 
+      <input id="addLat" value=" " name="latitude"  type="text" step="any">  
+      </p>      
+      <p>
+        Longitude? 
+        <input id="addLong" value=" "name="longitude"  type="text" step="any">  
+      </p>
+      <p>
+        Information about the place (will appear in text area)
+        <textarea name="about" placeholder="Information"></textarea>  
+      </p>
+      <p>
+        What weather is appropriate at this location
+        <br><input type="checkbox" value="true" name="sun"> Sun
+        <br><input type="checkbox" value="true" name="cloud"> Cloud
+        <br><input type="checkbox" value="true" name="rain"> Rain
+        <br><input type="checkbox" value="true" name="storm"> Storm
+        <br><input type="checkbox" value="true" name="snow"> Snow
+        <br><input type="checkbox" value="true" name="hot_day"> Hot day
+        <br><input type="checkbox" value="true" name="cold_day"> Cold day
+      </p>
+      <p>
+        Image URL 
+        <input name="image" placeholder="URL" type="url">  
+      </p>
+      <p>
+        Your email 
+        <input name="email" placeholder="Your email" type="email">  
+      </p>
+      <p>
+        <button type="submit">Submit</button>
+      </p>
+    </form>
+    
+    <!-- LOAD JS after everything else -->
+    <script src="https://www.gstatic.com/firebasejs/3.4.1/firebase.js"></script>
+    <script>
+      var config = 
+      {
+        apiKey: "AIzaSyBfE5qZxZAHkIWhH74stHtEeAWhxRI5kpE",
+        databaseURL: "https://anyweather-1488361407151.firebaseio.com"
+      };
+      firebase.initializeApp(config);
+    </script>
+    <script src="jquery.js"></script>
+    <script src="jquery.getFormData.js"></script>
+    <script src="app.js"></script>
+    <script type="text/javascript">
+
+function inputChange(e) {
+   console.log(document.getElementById("name").value);
+    var URL = 'https://api.postcodes.io/postcodes/'+document.getElementById("name").value
+    console.log(URL)
+
+    $.ajax(
+    {
+        dataType: "jsonp",
+        url: URL,
+        success: handleData
+    })
+}
+var latitude;
+var longitude;
+function handleData(json)
+{
+    console.log(json)
+
+    window.latitude = json.result.latitude    
+    window.longitude = json.result.longitude
+    console.log(latitude)
+    console.log(longitude) 
+    var event = new Event('latlongLoaded');
+    window.dispatchEvent(event);
+}
+
+window.addEventListener('latlongLoaded', function(e)
+    {
+        console.log('latlong loaded');
+        document.getElementById ("addLat").value =+latitude
+        document.getElementById ("addLong").value =+longitude
+
+})
+</script>
+  </body>
+</html>
