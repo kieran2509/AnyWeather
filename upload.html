@@ -18,7 +18,12 @@
     </h2> 
   
 
-    
+    <div>
+        <p>Put the PostCode in here to autofill Latitude and longitude</p>
+        <form class="pure-form">
+  <input id="name" type="text" placeholder="PostCode" onChange="inputChange(event)" onKeyUp="inputChange(event)" />
+</form>
+    </div>
     <form action="" method="post">
       <p>
         Place name <input name="places" placeholder="Place name" type="text">  
@@ -27,12 +32,7 @@
         Place website URL 
         <input name="Url" placeholder="URL" type="url">  
       </p>
-        <div>
-        <p>Put the PostCode in here to autofill Latitude and longitude</p>
-        <form class="pure-form">
-  <input id="name" type="text" placeholder="PostCode" onChange="inputChange(event)" onKeyUp="inputChange(event)" />
-</form>
-    </div>
+        
       <p>
         Latitude? 
       <input id="addLat" value=" " name="latitude"  type="text" step="any">  
@@ -101,7 +101,7 @@ function handleData(json)
 {
     console.log(json)
 
-    window.latitude = json.result.latitude    
+    latitude = json.result.latitude    
     window.longitude = json.result.longitude
     console.log(latitude)
     console.log(longitude) 
