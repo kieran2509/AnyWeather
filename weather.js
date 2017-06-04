@@ -41,15 +41,18 @@ switch(weatherid) {
         case 'tornado':
         case 'thunderstorm':
         case 'wind':
+        
             console.log ("Stormy");
             currentWeather = 'storm' 
             break;
         case 'rain':
+
             console.log ("Raining");
             currentWeather = 'rain' 
             break;
         case 'snow':
         case 'sleet':
+
             console.log ("Snowy");
             currentWeather = 'snow' 
             break;

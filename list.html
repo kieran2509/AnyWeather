@@ -19,7 +19,7 @@
     </style>
   </head>
   <body bgcolor="ffe401">
-        <a href="index.html"><img src="media/Logo.png" width="100%"></a>    
+        <div id="weather"><a href="index.html"><img src="media/Logo.png" width="100%"></a></div>
     <div id="map" style="width: 100%; height: 50%;"></div> 
     <div align="center"><h3>Our pick for you!</h3>
     <p id="change">Somewhere suitable and local just for you
@@ -132,11 +132,13 @@
         //need work HERE
         var weather = location[currentWeather]
         console.log(weather)
-        
+                    
         if (weather == true){    
-        var contentString = '<h1>'+location.places+'</h1>' + '<br>' + location.about + '<br>' + '<img src="' + location.image +'"width=100%>'
+        var contentString = '<h1>'+location.places+'</h1>' + '<br>' + location.about + '<br>' + '<img src="' +location.image +'"width=100%>'+'<br>'+'<a href='+location.Url+'>'+"Website"+'</a>'
         console.log(location.places)
-
+        
+        
+        
         var infowindow = new google.maps.InfoWindow({
           content: contentString
         });
@@ -145,6 +147,24 @@
             lat: location.latitude,
             lng: location.longitude
         };
+            
+        console.log(currentWeather)
+        if (currentWeather =="cloud"){
+            console.log("it loaded")
+            document.getElementById ("weather").innerHTML = '<a href="index.html"><img src="media/cloud.jpg" width=100%>'
+        }else if (currentWeather == "sun"){
+            document.getElementById ("weather").innerHTML = '<a href="index.html"><img src="media/sun.jpg" width=100%>'
+        }else if (currentWeather == "rain"){
+            document.getElementById ("weather").innerHTML = '<a href="index.html"><img src="media/rain.jpg" width=100%>'
+        }else if (currentWeather == "storm"){
+            document.getElementById ("weather").innerHTML = '<a href="index.html"><img src="media/storm.jpg" width=100%>'
+        }else if (currentWeather == "snow"){
+            document.getElementById ("weather").innerHTML = '<a href="index.html"><img src="media/snow.jpg" width=100%>'
+        }else if (currentWeather == "hot_day"){
+            document.getElementById ("weather").innerHTML = '<a href="index.html"><img src="media/hotday.jpg" width=100%>'
+        }else if (currentWeather == "cold_day"){
+            document.getElementById ("weather").innerHTML = '<a href="index.html"><img src="media/coldday.jpg" width=100%>'
+        }
         if (navigator.geolocation) {
           navigator.geolocation.getCurrentPosition(function(position) {
             var p1 = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
@@ -157,6 +177,8 @@
         console.log(DirectionsURL)
             document.getElementById ("change").innerHTML = "Positioned only " + calcDistance(p1,p2)+ " km away "+ '<br>' +location.places +" - "+ location.about +'<br>'+  '<img src="' + location.image +'"width=50%>' +'<br>' +'<a href="' + DirectionsURL +'"role=button>'+'<button>'+ "Get Directions" +'</button>'+'</a>'        
             }
+              
+              document.getElementById ("weather").innerHTML =  
               //calculates distance between two points in km's
             function calcDistance(p1, p2) {
               return (google.maps.geometry.spherical.computeDistanceBetween(p1, p2) / 1000).toFixed(1);
@@ -170,6 +192,8 @@
         marker.addListener('click', function() {
           infowindow.open(map, marker);
 
+            
+            
         })}}}, false); }}
 
     </script>
