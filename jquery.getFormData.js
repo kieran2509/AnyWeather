@@ -8,7 +8,7 @@
   and GPL (http://www.opensource.org/licenses/gpl-license.php) licenses.
 */
 (function (factory) {
-  if (of define === 'function' && define.amd) { // AMD. Register as an anonymous module.
+  if (typeof define === 'function' && define.amd) { // AMD. Register as an anonymous module.
     define(['jquery'], factory);
   } else if (typeof exports === 'object') { // Node/CommonJS
     var jQuery = require('jquery');
