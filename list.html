@@ -173,7 +173,7 @@
             var end = p2
             var DirectionsURL = 'https://www.google.com/maps/dir/?api=1&origin=' + start + '&destination=' + end 
         console.log(DirectionsURL)
-            document.getElementById ("change").innerHTML = "Positioned only " + calcDistance(p1,p2)+ " km away "+ '<br>' +location.places +" - "+ location.about +'<br>'+  '<img src="' + location.image +'"width=50%>' +'<br>' +'<a href="' + DirectionsURL +'"role=button>'+'<button>'+ "Get Directions" +'</button>'+'</a>'        
+            document.getElementById ("change").innerHTML = "Positioned only " + calcDistance(p1,p2)+ " km away "+ '<br>' +location.places +" - "+ location.about +'<br>'+  '<img src="' + location.image +'"width=50%>' +'<br>' +'<a href="' + DirectionsURL +'"role=button>'+'<img src="media/directions.png" width="30%">'+'</a>'        
             }
               //calculates distance between two points in km's
             function calcDistance(p1, p2) {
