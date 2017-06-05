@@ -150,7 +150,7 @@
         var weather = location[currentWeather]
         console.log(weather)
         if (weather == true){    
-        var contentString = '<h1>'+location.places+'</h1>' + '<br>' + location.about + '<br>' + '<img src="' + location.image +'"width=100%>'
+        var contentString = '<h1>'+location.places+'</h1>' + '<br>' + location.about + '<br>' + '<img src="' + location.image +'"width=100%>'+'<br>'+'<a href='+location.Url+'>'+"Website"+'</a>'
         console.log(location.places)
         var infowindow = new google.maps.InfoWindow({
           content: contentString
