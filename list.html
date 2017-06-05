@@ -148,10 +148,13 @@
         }
         
         var weather = location[currentWeather]
+        var loc = "http://maps.google.com/?q="+location.latitude+","+location.longitude
+        console.log(loc)
         console.log(weather)
         if (weather == true){    
-        var contentString = '<h1>'+location.places+'</h1>' + '<br>' + location.about + '<br>' + '<img src="' + location.image +'"width=100%>'+'<br>'+'<a href='+location.Url+'>'+"Website"+'</a>'
+        var contentString = '<h1>'+location.places+'</h1>' + '<br>' + location.about + '<br>' + '<a href='+location.Url+'><button>'+"Website"+'</button></a>'+'<br>'+'<img src="' + location.image +'"width=100%>'+'<br>'+'<a href='+loc+'><button>'+"Find On Map"+'</button></a>'
         console.log(location.places)
+        
         var infowindow = new google.maps.InfoWindow({
           content: contentString
         });
