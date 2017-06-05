@@ -19,7 +19,7 @@
     </style>
   </head>
   <body bgcolor="ffe401">
-    <img src="media/Logo.png" width="100%">  
+        <div id="weather"><a href="index.html"><img src="media/Logo.jpg" width="100%"></a></div>  
     <div id="map" style="width: 100%; height: 50%;"></div> 
     <div align="center"><h3>Our pick for you!</h3>
     <p id="change">Somewhere suitable and local just for you
@@ -129,7 +129,24 @@
 //        console.log('weathers loaded oh yeah');
         //var weather = currentWeather
         console.log(currentWeather)
-        //need work HERE
+        
+        if (currentWeather =="cloud"){
+            console.log("it loaded")
+            document.getElementById ("weather").innerHTML = '<a href="index.html"><img src="media/cloud.jpg" width=100%>'
+        }else if (currentWeather == "sun"){
+            document.getElementById ("weather").innerHTML = '<a href="index.html"><img src="media/sun.jpg" width=100%>'
+        }else if (currentWeather == "rain"){
+            document.getElementById ("weather").innerHTML = '<a href="index.html"><img src="media/rain.jpg" width=100%>'
+        }else if (currentWeather == "storm"){
+            document.getElementById ("weather").innerHTML = '<a href="index.html"><img src="media/storm.jpg" width=100%>'
+        }else if (currentWeather == "snow"){
+            document.getElementById ("weather").innerHTML = '<a href="index.html"><img src="media/snow.jpg" width=100%>'
+        }else if (currentWeather == "hot_day"){
+            document.getElementById ("weather").innerHTML = '<a href="index.html"><img src="media/hotday.jpg" width=100%>'
+        }else if (currentWeather == "cold_day"){
+            document.getElementById ("weather").innerHTML = '<a href="index.html"><img src="media/coldday.jpg" width=100%>'
+        }
+        
         var weather = location[currentWeather]
         console.log(weather)
         if (weather == true){    
