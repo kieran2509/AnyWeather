@@ -268,23 +268,7 @@
         if (weather == true){    
         var contentString = '<h1>'+location.places+'</h1>' + '<br>' + location.about + '<br>' +'<br>'+'<img src="' + location.image +'"width=100%>'+'<br>'+'<center><a href='+location.Url+' target="_blank"><img src="media/website.png" width="45%"></a>'+'&nbsp;'+'<a href='+loc+' target="_blank"><img src="media/directions.png" width="45%"></a></center>'
         console.log(location.places)
-        navigator.geolocation.getCurrentPosition(function(position) {
-        var p1 = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
-        var p2 = new google.maps.LatLng(location.latitude, location.longitude);
-            /*function select() {
-   console.log(document.getElementById("number").value);*/
-        if (calcDistance(p1,p2)<5){
-        console.log(location.places)
-        var start = p1
-        var end = p2
-        var DirectionsURL = 'https://www.google.com/maps/dir/?api=1&origin=' + start + '&destination=' + end 
-        console.log(DirectionsURL)
-            document.getElementById ("change").innerHTML = "Positioned only " + calcDistance(p1,p2)+ " km away "+ '<br>' +location.places +" - "+ location.about +'<br>'+  '<img src="' + location.image +'"width=50%>' +'<br>' +'<center><a href='+location.Url+' target="_blank"><img src="media/website.png" width="30%"></a>'+'&nbsp;'+'<a href="' + DirectionsURL +'"role=button target="_blank">'+'<img src="media/directions.png" width="30%">'+'</a></center>'  
         
-        //calculates distance between two points in km's
-        function calcDistance(p1, p2) {
-            return (google.maps.geometry.spherical.computeDistanceBetween(p1, p2) / 1000).toFixed(1);
-        }}})
         var infowindow = new google.maps.InfoWindow({
           content: contentString
         });
@@ -294,7 +278,23 @@
             lng: location.longitude
         };
         
-          
+          navigator.geolocation.getCurrentPosition(function(position) {
+            var p1 = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
+            var p2 = new google.maps.LatLng(location.latitude, location.longitude);
+            /*function select() {
+   console.log(document.getElementById("number").value);*/
+            if (calcDistance(p1,p2)<5){
+            console.log(location.places)
+            var start = p1
+            var end = p2
+            var DirectionsURL = 'https://www.google.com/maps/dir/?api=1&origin=' + start + '&destination=' + end 
+        console.log(DirectionsURL)
+            document.getElementById ("change").innerHTML = "Positioned only " + calcDistance(p1,p2)+ " km away "+ '<br>' +location.places +" - "+ location.about +'<br>'+  '<img src="' + location.image +'"width=50%>' +'<br>' +'<center><a href='+location.Url+' target="_blank"><img src="media/website.png" width="30%"></a>'+'&nbsp;'+'<a href="' + DirectionsURL +'"role=button target="_blank">'+'<img src="media/directions.png" width="30%">'+'</a></center>'        
+            }
+              //calculates distance between two points in km's
+            function calcDistance(p1, p2) {
+              return (google.maps.geometry.spherical.computeDistanceBetween(p1, p2) / 1000).toFixed(1);
+            }})
         var marker = new google.maps.Marker({
             position: pos,
             map: map,
