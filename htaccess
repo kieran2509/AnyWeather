@@ -1,0 +1,3 @@
+RewriteEngine On
+RewriteCond %{HTTPS} off
+RewriteRule ^(.*)$ https://www.anyweather.info/$1 [R=301,L]

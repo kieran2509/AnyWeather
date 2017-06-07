@@ -19,8 +19,18 @@
     </style>
   </head>
   <body bgcolor="ffe401">
-        <div id="weather"><a href="index.html"><img src="media/Logo.jpg" width="100%"></a></div>  
+        <div id="weather"><a href="index.html"><img src="media/Logo.jpg" width="100%"></a></div>
+
     <div id="map" style="width: 100%; height: 50%;"></div> 
+    <!--  <br>
+    <div id="number" align="center">
+    <select onChange="select()">
+    <option value="10">You select a radius and we will select a place</option>
+    <option value="2">2</option>
+    <option value="4">4</option>
+    <option value="6">6</option>
+    <option value="8">8</option>
+    </select></div>-->
     <div align="center"><h3>Our pick for you!</h3>
     <p id="change">Somewhere suitable and local just for you
         </p></div>   
@@ -152,7 +162,7 @@
         console.log(loc)
         console.log(weather)
         if (weather == true){    
-        var contentString = '<h1>'+location.places+'</h1>' + '<br>' + location.about + '<br>' +'<br>'+'<img src="' + location.image +'"width=100%>'+'<br>'+'<center><a href='+location.Url+'><img src="media/website.png" width="45%"></a>'+'&nbsp;'+'<a href='+loc+'><img src="media/directions.png" width="45%"></a></center>'
+        var contentString = '<h1>'+location.places+'</h1>' + '<br>' + location.about + '<br>' +'<br>'+'<img src="' + location.image +'"width=100%>'+'<br>'+'<center><a href='+location.Url+' target="_blank"><img src="media/website.png" width="45%"></a>'+'&nbsp;'+'<a href='+loc+' target="_blank"><img src="media/directions.png" width="45%"></a></center>'
         console.log(location.places)
         
         var infowindow = new google.maps.InfoWindow({
@@ -167,13 +177,15 @@
           navigator.geolocation.getCurrentPosition(function(position) {
             var p1 = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
             var p2 = new google.maps.LatLng(location.latitude, location.longitude);
-            if (calcDistance(p1,p2)<10){
+            /*function select() {
+   console.log(document.getElementById("number").value);*/
+            if (calcDistance(p1,p2)<5){
             console.log(location.places)
             var start = p1
             var end = p2
             var DirectionsURL = 'https://www.google.com/maps/dir/?api=1&origin=' + start + '&destination=' + end 
         console.log(DirectionsURL)
-            document.getElementById ("change").innerHTML = "Positioned only " + calcDistance(p1,p2)+ " km away "+ '<br>' +location.places +" - "+ location.about +'<br>'+  '<img src="' + location.image +'"width=50%>' +'<br>' +'<center><a href='+location.Url+'><img src="media/website.png" width="30%"></a>'+'&nbsp;'+'<a href="' + DirectionsURL +'"role=button>'+'<img src="media/directions.png" width="30%">'+'</a></center>'        
+            document.getElementById ("change").innerHTML = "Positioned only " + calcDistance(p1,p2)+ " km away "+ '<br>' +location.places +" - "+ location.about +'<br>'+  '<img src="' + location.image +'"width=50%>' +'<br>' +'<center><a href='+location.Url+' target="_blank"><img src="media/website.png" width="30%"></a>'+'&nbsp;'+'<a href="' + DirectionsURL +'"role=button target="_blank">'+'<img src="media/directions.png" width="30%">'+'</a></center>'        
             }
               //calculates distance between two points in km's
             function calcDistance(p1, p2) {
