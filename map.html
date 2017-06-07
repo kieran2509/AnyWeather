@@ -277,7 +277,7 @@
             lat: location.latitude,
             lng: location.longitude
         };
-        
+        if (navigator.geolocation) {
           navigator.geolocation.getCurrentPosition(function(position) {
             var p1 = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
             var p2 = new google.maps.LatLng(location.latitude, location.longitude);
@@ -303,7 +303,7 @@
         
         marker.addListener('click', function() {
           infowindow.open(map, marker);
-        })}}, false); }}
+        })}}}, false); }}
 
     </script>
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB0IgedE0gQrk_Jb2oUT0dJI9bvt0a9lKQ&libraries=places&callback=initAutocomplete"
