@@ -328,7 +328,7 @@
         console.log(loc)
         console.log(weather)
         if (weather == true){    
-        var contentString = '<h1>'+location.places+'</h1>' + '<br>' + location.about + '<br>' +'<br>'+'<img src="' + location.image +'"width=100%>'+'<a href="mailto:?subject='+location.places+'&body=Hey, I was just looking on anyweather.info and it has recommended this place. Here are the details: '+location.places+", "+location.about+" If you think it sounds good why dont you try it out? Here's how to get their "+loc+ '"target="_top">Share this place with a friend</a>'+'<br>'+'<center><a href='+location.Url+' target="_blank"><img src="media/website.png" width="45%"></a>'+'&nbsp;'+'<a href='+loc+' target="_blank"><img src="media/directions.png" width="45%"></a></center>'
+        var contentString = '<h1>'+location.places+'</h1>' + '<br>' + location.about + '<br>' +'<br>'+'<a href="mailto:?subject='+location.places+'&body=Hey, I was just looking on anyweather.info and it has recommended this place. Here are the details: '+location.places+", "+location.about+" If you think it sounds good why dont you try it out? Here's how to get there "+loc+ '"target="_top">Share this place with a friend</a>'+'<br>'+'<img src="' + location.image +'"width=100%>'+'<br>'+'<center><a href='+location.Url+' target="_blank"><img src="media/website.png" width="45%"></a>'+'&nbsp;'+'<a href='+loc+' target="_blank"><img src="media/directions.png" width="45%"></a></center>'
 
 
         console.log(location.places)
@@ -355,7 +355,7 @@
             var end = p2
             var DirectionsURL = 'https://www.google.com/maps/dir/?api=1&origin=' + start + '&destination=' + end 
         console.log(DirectionsURL)
-            document.getElementById ("change").innerHTML = "Positioned only " + calcDistance(p1,p2)+ " km away from your current position."+ '<br>' +location.places +" - "+ location.about +'<br>'+  '<img src="' + location.image +'"width=50%>'+'<a href="mailto:?subject='+location.places+'&body=Hey, I was just looking on anyweather.info and it has recommended this place. Here are the details: '+location.places+", "+location.about+" If you think it sounds good why dont you try it out? Here's how to get their "+loc+ '"target="_top">Share this place with a friend</a>' +'<br>' +'<center><a href='+location.Url+' target="_blank"><img src="media/website.png" width="30%"></a>'+'&nbsp;'+'<a href="' + DirectionsURL +'"role=button target="_blank">'+'<img src="media/directions.png" width="30%">'+'</a></center>'    
+            document.getElementById ("change").innerHTML = "Positioned only " + calcDistance(p1,p2)+ " km away from your current position."+ '<br>' +location.places +" - "+ location.about + '<br>'+'<a href="mailto:?subject='+location.places+'&body=Hey, I was just looking on anyweather.info and it has recommended this place. Here are the details: '+location.places+", "+location.about+" If you think it sounds good why dont you try it out? Here's how to get there "+loc+ '"target="_top">Share this place with a friend</a>'+'<br>'+ '<img src="' + location.image +'"width=50%>' +'<br>' +'<center><a href='+location.Url+' target="_blank"><img src="media/website.png" width="30%"></a>'+'&nbsp;'+'<a href="' + DirectionsURL +'"role=button target="_blank">'+'<img src="media/directions.png" width="30%">'+'</a></center>'    
             }
               
             
