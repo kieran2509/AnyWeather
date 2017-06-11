@@ -21,6 +21,8 @@ function getTheWeather(position)
 }
 
 var currentWeather = 'rain';
+var nowWeather;
+var dailyWeather;
 var weather;
 var weatherid;
 function handleData(json)
@@ -28,8 +30,10 @@ function handleData(json)
     console.log(json)
 
     weather = json.currently.icon
+    dailyWeather = json.hourly.summary
+    nowWeather = json.currently.summary
     console.log(weather)    
-
+    console.log(dailyWeather)
     window.weatherid = weather
     //    new Number(weatherid)  
     console.log(weatherid)
